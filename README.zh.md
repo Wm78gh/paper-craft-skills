@@ -2,22 +2,42 @@
 
 [English](./README.md) | 中文
 
-**一键把学术论文变成深度解读文章或教育漫画**
+**把学术论文一键变成深度文章、论文框架图和机制图解。**
+
+<p align="center">
+  <img src="examples/paper-illustrated/attention-is-all-you-need/transformer-overview-paper-figure.png" width="900" alt="paper-craft-skills 生成的 Transformer 方法总览图"/>
+</p>
+
+<p align="center">
+  <b>从论文 PDF 到可以直接放 README、文章和视频里的方法图。</b><br/>
+  先读论文，推荐该画哪些图，确认语言 / 风格 / 张数，再调用 Codex 生图能力或当前环境可用的生图后端。
+</p>
 
 <table>
 <tr>
 <td width="50%" align="center">
-<b>paper-analyzer</b><br/>
-论文 → 深度文章<br/><br/>
-<img src="images/hero_banner.png" width="400"/>
+<img src="examples/paper-illustrated/attention-is-all-you-need/self-attention-sketchnote.png" width="320"/><br/>
+<b>paper-comic</b><br/>
+论文 → 方法图解<br/>
+温暖笔记风 / 论文框架图风
 </td>
 <td width="50%" align="center">
-<b>paper-comic</b><br/>
-论文 → 10页漫画<br/><br/>
-<img src="examples/paper-comic/00-cover.png" width="200"/>
+<img src="images/hero_banner.png" width="420"/><br/>
+<b>paper-analyzer</b><br/>
+论文 → 深度技术文章<br/>
+支持公式、源码、图片和多种写作风格
 </td>
 </tr>
 </table>
+
+## 为什么不一样
+
+| Skill | 输出 | 适合做什么 |
+|------|------|------------|
+| **paper-comic** | 方法总览图、机制拆解图、论文视觉笔记 | README 首屏、视频宣传、技术文章配图、论文讲解 |
+| **paper-analyzer** | 深度 Markdown/HTML 长文，多种写作风格 | 论文解读、公众号文章、学习笔记、技术博客 |
+
+`paper-comic` 现在不是固定 10 页漫画，而是论文方法图解：它会先读论文，判断哪些内容值得画，再问你要中文还是英文、要温暖笔记风还是论文框架图风、只要一张概述图还是生成多张机制图。
 
 ## 快速开始
 
@@ -27,12 +47,12 @@
 npx skills add zsyggg/paper-craft-skills
 ```
 
-### 2. 配置 API
+### 2. 配置
 
 | 技能 | 需要配置 |
 |------|----------|
-| paper-analyzer | `MINERU_TOKEN` - 从 [mineru.net](https://mineru.net) 获取 |
-| paper-comic | Google 账号（首次运行自动弹出登录） |
+| paper-analyzer | `MINERU_TOKEN`，从 [mineru.net](https://mineru.net) 获取 |
+| paper-comic | 当前环境可用的生图后端。在 Codex 中会使用内置 `imagegen` skill。 |
 
 ```bash
 # paper-analyzer 需要
@@ -43,20 +63,60 @@ export MINERU_TOKEN="your_token"
 ### 3. 使用
 
 ```bash
+# 生成论文方法图解
+/paper-comic /path/to/paper.pdf
+/paper-comic https://arxiv.org/abs/1706.03762 --style paper-figure --language English --pages 1
+
 # 分析论文，生成深度文章
 请帮我分析这篇论文：/path/to/paper.pdf
-
-# 生成论文漫画
-请把这篇论文做成漫画：/path/to/paper.pdf
 ```
 
----
+## paper-comic：论文方法图解
 
-## paper-analyzer
+生成图片前，skill 会先推荐方案：
+
+```text
+我建议生成 4 张图：
+1. 方法总览图
+2. 核心机制 A
+3. 核心机制 B
+4. 关键结果图
+
+请确认：
+- 语言：中文 / English / 双语
+- 风格：sketchnote / paper-figure
+- 范围：只要第 1 张，还是生成全部 4 张？
+```
+
+### 两种视觉风格
+
+| 风格 | 视觉效果 | 适合场景 |
+|------|----------|----------|
+| **sketchnote** | 温暖科研笔记风，手绘箭头、圈注和理解锚点 | 想让人快速看懂论文在做什么 |
+| **paper-figure** | 干净专业的论文框架图，模块、箭头、矩阵和结果更工整 | 想做 README 首屏、技术文章头图、演示文稿 |
+
+### 示例：Attention Is All You Need
+
+<table>
+<tr>
+<td align="center" width="58%">
+<img src="examples/paper-illustrated/attention-is-all-you-need/transformer-overview-paper-figure.png" width="520"/><br/>
+<b>paper-figure</b>：Transformer 方法总览
+</td>
+<td align="center" width="42%">
+<img src="examples/paper-illustrated/attention-is-all-you-need/self-attention-sketchnote.png" width="260"/><br/>
+<b>sketchnote</b>：自注意力机制图解
+</td>
+</tr>
+</table>
+
+完整示例见：[examples/paper-illustrated/attention-is-all-you-need](./examples/paper-illustrated/attention-is-all-you-need)
+
+## paper-analyzer：深度论文文章
 
 将学术论文转化为深度技术文章，支持 3 种写作风格。
 
-### 效果展示
+### 写作风格
 
 <table>
 <tr>
@@ -81,67 +141,23 @@ export MINERU_TOKEN="your_token"
 
 | 功能 | 说明 | 效果 |
 |------|------|------|
-| **公式讲解** | 插入公式图片，详解符号含义 | ![](images/formula_feature.png) |
-| **代码分析** | 论文概念与 GitHub 源码对照 | ![](images/code_feature.png) |
-
----
-
-## paper-comic
-
-将学术论文转化为 10 页教育漫画，4 种画风可选。
-
-### 画风选择
-
-<table>
-<tr>
-<td align="center" width="25%"><img src="examples/paper-comic/cover-classic.png" width="150"/><br/><b>classic</b><br/>通用（默认）</td>
-<td align="center" width="25%"><img src="examples/paper-comic/cover-tech.png" width="150"/><br/><b>tech</b><br/>AI/计算机</td>
-<td align="center" width="25%"><img src="examples/paper-comic/cover-warm.png" width="150"/><br/><b>warm</b><br/>心理学/教育</td>
-<td align="center" width="25%"><img src="examples/paper-comic/cover-chalk.png" width="150"/><br/><b>chalk</b><br/>数学/物理</td>
-</tr>
-</table>
-
-### 完整示例：Engram 论文
-
-<table>
-<tr>
-<td align="center"><img src="examples/paper-comic/00-cover.png" width="100"/><br/>封面</td>
-<td align="center"><img src="examples/paper-comic/01-page.png" width="100"/><br/>1</td>
-<td align="center"><img src="examples/paper-comic/02-page.png" width="100"/><br/>2</td>
-<td align="center"><img src="examples/paper-comic/03-page.png" width="100"/><br/>3</td>
-<td align="center"><img src="examples/paper-comic/04-page.png" width="100"/><br/>4</td>
-<td align="center"><img src="examples/paper-comic/05-page.png" width="100"/><br/>5</td>
-</tr>
-<tr>
-<td align="center"><img src="examples/paper-comic/06-page.png" width="100"/><br/>6</td>
-<td align="center"><img src="examples/paper-comic/07-page.png" width="100"/><br/>7</td>
-<td align="center"><img src="examples/paper-comic/08-page.png" width="100"/><br/>8</td>
-<td align="center"><img src="examples/paper-comic/09-page.png" width="100"/><br/>9</td>
-<td align="center"><img src="examples/paper-comic/10-page.png" width="100"/><br/>10</td>
-<td></td>
-</tr>
-</table>
-
----
+| **公式讲解** | 插入公式图片，详解符号含义 | <img src="images/formula_feature.png" width="260"/> |
+| **代码分析** | 论文概念与 GitHub 源码对照 | <img src="images/code_feature.png" width="260"/> |
 
 ## 兼容性
 
 支持以下 AI 编程助手：
 
+- Codex
 - Claude Code
 - Cursor
-- Codex
 - Windsurf
-- 其他支持 Claude Code 技能的工具
-
----
+- 其他支持 Claude Code skill 的工具
 
 ## 致谢
 
-- **baoyu-gemini-web** - 图片生成后端，基于 [JimLiu/baoyu-skills](https://github.com/JimLiu/baoyu-skills)
 - **MinerU** - PDF 高精度解析，来自 [mineru.net](https://mineru.net)
-
----
+- 图片生成使用当前环境可用的生图后端；在 Codex 中会使用内置 `imagegen`。
 
 ## License
 
