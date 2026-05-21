@@ -15,6 +15,27 @@ English | [中文](./README.zh.md)
 
 ---
 
+## How to install
+
+**Copy this into Codex or Claude Code:**
+
+```
+Please install zsyggg/paper-craft-skills for me.
+GitHub: https://github.com/zsyggg/paper-craft-skills
+```
+
+That's it. The agent handles clone, symlink, and registration. **No API keys. No accounts.** If you prefer a terminal:
+
+```bash
+npx skills add zsyggg/paper-craft-skills
+```
+
+**Works with:** Codex · Claude Code · Cursor · Windsurf
+
+---
+
+## What's inside
+
 <table>
 <tr>
 <td width="50%" align="center" valign="top">
@@ -40,8 +61,8 @@ Reads your paper → proposes what to draw → you confirm → generates.
 ### 📄 paper-analyzer
 **Paper → Deep Articles**
 
-<img src="images/styles_comparison.png" width="380"/><br/>
-<sub>Three writing styles: storytelling · academic · concise</sub>
+<img src="images/hero_banner.png" width="380"/><br/>
+<sub>Paper → polished HTML article with formulas, code cross-reference, and choice of style</sub>
 
 <br/>
 
@@ -91,7 +112,15 @@ Reads the paper, then recommends:
 
 ---
 
-## paper-analyzer — Three styles, one paper
+## paper-analyzer — Deep articles that read like a human expert wrote them
+
+**Not a paper translator — a re-interpreter.** It reads the full paper, searches GitHub for open-source implementations, cross-references code with the paper, and writes in your chosen style.
+
+### Three writing styles
+
+<p align="center">
+  <img src="images/styles_comparison.png" width="700"/>
+</p>
 
 | Style | Reads like | Use it for |
 |-------|-----------|------------|
@@ -99,25 +128,31 @@ Reads the paper, then recommends:
 | **academic** | A peer-reviewed deep dive — KaTeX formulas, comparison tables | Lab meetings, lit reviews |
 | **concise** | A cheat sheet — Mermaid diagram + key data table | Quick understanding |
 
-**Also does:** GitHub code search & cross-reference, automatic formula rendering, HTML output ready to share.
+### Features
+
+<table>
+<tr>
+<td width="50%" align="center">
+<img src="images/formula_feature.png" width="360"/><br/>
+<b>Formula Explanation</b><br/>
+Extracted paper formulas with symbol-by-symbol breakdown
+</td>
+<td width="50%" align="center">
+<img src="images/code_feature.png" width="360"/><br/>
+<b>Code Analysis</b><br/>
+Aligns paper concepts with the GitHub source code
+</td>
+</tr>
+</table>
+
+```bash
+/paper-analyzer https://arxiv.org/abs/1706.03762     # arxiv link
+/paper-analyzer /path/to/paper.pdf                     # local PDF
+/paper-analyzer                                         # then paste text
+```
 
 ---
 
-## Quick Start
-
-```bash
-npx skills add zsyggg/paper-craft-skills
-```
-
-```bash
-/paper-comic https://arxiv.org/abs/1706.03762
-/paper-analyzer https://arxiv.org/abs/1706.03762
-```
-
-No API keys. No accounts. Image generation uses whatever your environment has — Codex built-in `imagegen`, or any installed backend.
-
-**Works with:** Codex · Claude Code · Cursor · Windsurf
-
----
+## License
 
 MIT
