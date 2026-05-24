@@ -2,14 +2,14 @@
 
 English | [中文](./README.zh.md)
 
-**Turn academic papers into polished method figures and in-depth articles — zero config, one command.**
+**Turn academic papers into polished method figures, visual slide decks, and in-depth articles — zero config, one command.**
 
 <p align="center">
   <img src="examples/paper-illustrated/attention-is-all-you-need/transformer-overview-paper-figure.png" width="700" alt="Transformer architecture — generated from Attention Is All You Need"/>
 </p>
 
 <p align="center">
-  From arxiv link to publication-ready visuals and deep-dive articles.<br/>
+  From arxiv link to publication-ready visuals, AIGC slide decks, and deep-dive articles.<br/>
   Drop a paper, pick a style, get output that looks like a human expert made it.
 </p>
 
@@ -74,6 +74,28 @@ Reads the full paper → searches GitHub for code → writes in your chosen styl
 | 📐 Formulas | **KaTeX** rendering |
 | 📊 Diagrams | **Mermaid** architecture charts |
 | ⚡ Setup | **Zero config** — no API keys |
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center" valign="top">
+
+### 🖼️ paper-deck
+**Paper → Visual Slide Deck**
+
+<img src="images/paper_deck_intro.png" width="700"/><br/>
+<sub>Paper/article → analysis → outline → visual prompts → PPTX/PDF</sub>
+
+<br/>
+
+Reads a paper or article → plans a deck → generates polished 16:9 slide images → merges them into `.pptx` and `.pdf`.
+
+| Style | Best for |
+|-------|----------|
+| **journal-minimal** | Nature/IEEE-inspired academic decks |
+| **business-research** | Strategy and research briefings |
+| **warm-notes** | Friendly study-note explanations |
+| **liquid-glass** | Apple-inspired visual chapter slides |
 
 </td>
 </tr>

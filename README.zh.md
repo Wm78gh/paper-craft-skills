@@ -2,14 +2,14 @@
 
 [English](./README.md) | 中文
 
-**把学术论文变成精美的方法图解和深度长文。零配置，一行命令。**
+**把学术论文变成精美的方法图解、高质感 AIGC 幻灯片和深度长文。零配置，一行命令。**
 
 <p align="center">
   <img src="examples/paper-illustrated/attention-is-all-you-need/transformer-overview-paper-figure.png" width="700" alt="基于 Attention Is All You Need 生成的 Transformer 架构图"/>
 </p>
 
 <p align="center">
-  输入 arxiv 链接，选择风格，输出像人类专家手笔的图解和文章。
+  输入 arxiv 链接，选择风格，输出像人类专家手笔的图解、PPT 和文章。
 </p>
 
 ---
@@ -33,7 +33,7 @@ npx skills add zsyggg/paper-craft-skills
 
 ---
 
-## 两个技能
+## 三个技能
 
 <table>
 <tr>
@@ -73,6 +73,28 @@ npx skills add zsyggg/paper-craft-skills
 | 📐 公式 | **KaTeX** 渲染 |
 | 📊 图表 | **Mermaid** 架构图 |
 | ⚡ 配置 | **零配置** — 不需要任何 API key |
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center" valign="top">
+
+### 🖼️ paper-deck
+**论文 → 视觉幻灯片**
+
+<img src="images/paper_deck_intro.png" width="700"/><br/>
+<sub>论文/文章 → 分析 → 大纲 → 视觉提示词 → PPTX/PDF</sub>
+
+<br/>
+
+读完论文或文章 → 规划整套 deck → 逐页生成 16:9 高质感 slide image → 合成为 `.pptx` 和 `.pdf`。
+
+| 风格 | 适合 |
+|------|------|
+| **journal-minimal** | Nature/IEEE 风学术汇报 |
+| **business-research** | 商业研究和策略汇报 |
+| **warm-notes** | 温暖手记风知识讲解 |
+| **liquid-glass** | Apple 式玻璃质感章节页 |
 
 </td>
 </tr>
