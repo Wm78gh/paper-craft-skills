@@ -78,28 +78,58 @@ Reads the full paper → searches GitHub for code → writes in your chosen styl
 </td>
 </tr>
 <tr>
-<td colspan="2" align="center" valign="top">
+<td width="50%" align="center" valign="top">
 
 ### 🖼️ paper-deck
 **Paper → Visual Slide Deck**
 
-<img src="images/paper_deck_intro.png" width="700"/><br/>
+<img src="images/paper_deck_intro.png" width="380"/><br/>
 <sub>Paper/article → analysis → outline → visual prompts → PPTX/PDF</sub>
 
 <br/>
 
-Reads a paper or article → plans a deck → generates polished 16:9 slide images → merges them into `.pptx` and `.pdf`.
+Reads your paper → plans the deck → generates slide images → exports PPTX/PDF.
 
-| Style | Best for |
-|-------|----------|
-| **journal-minimal** | Nature/IEEE-inspired academic decks |
-| **business-research** | Strategy and research briefings |
-| **warm-notes** | Friendly study-note explanations |
-| **liquid-glass** | Apple-inspired visual chapter slides |
+| Output | |
+|--------|--|
+| 🎞️ Slides | 16:9 visual pages |
+| 📦 Export | `.pptx` + `.pdf` |
+| 🛠️ Edits | Regenerate any page |
+
+</td>
+<td width="50%" align="center" valign="top">
 
 </td>
 </tr>
 </table>
+
+---
+
+## paper-deck — Visual slide decks that don't look like templates
+
+`paper-deck` turns a paper, article, or technical note into a designed slide deck. It first builds a deck brief and slide-by-slide outline, then writes reproducible visual prompts, generates polished 16:9 slide images, and merges them into `.pptx` and `.pdf`.
+
+It is built for iteration: every page has its own prompt, so you can ask for precise changes like “make slide 5 more journal-like”, “replace slide 8 with a real benchmark chart”, or “keep the layout but switch the cover to liquid glass”.
+
+<p align="center">
+  <img src="images/paper_deck_styles.png" width="640"/>
+  <br/><sub>Four compact style presets for the same paper topic</sub>
+</p>
+
+| Style | Best for |
+|-------|----------|
+| **journal-minimal** | Nature/IEEE-inspired academic decks and thesis defenses |
+| **business-research** | Strategy memos, industry research, investor/client briefings |
+| **warm-notes** | Study-note explanations, teaching, approachable paper walkthroughs |
+| **liquid-glass** | Apple-inspired visual chapters, covers, and high-impact section pages |
+
+It also supports real source visuals. When a PDF contains strong figures, tables, plots, or screenshots, the skill plans which slides should use them, where they should be cropped, and how they should be framed. Real visuals can be mounted into clean academic panels, evidence blocks, or glass-style layouts instead of being hallucinated from scratch.
+
+```bash
+/paper-deck https://arxiv.org/abs/1706.03762
+/paper-deck /path/to/paper.pdf --style journal-minimal --slides 12
+/paper-deck notes.md --style liquid-glass
+```
 
 ---
 

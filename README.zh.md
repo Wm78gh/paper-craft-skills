@@ -77,28 +77,58 @@ npx skills add zsyggg/paper-craft-skills
 </td>
 </tr>
 <tr>
-<td colspan="2" align="center" valign="top">
+<td width="50%" align="center" valign="top">
 
 ### 🖼️ paper-deck
 **论文 → 视觉幻灯片**
 
-<img src="images/paper_deck_intro.png" width="700"/><br/>
+<img src="images/paper_deck_intro.png" width="380"/><br/>
 <sub>论文/文章 → 分析 → 大纲 → 视觉提示词 → PPTX/PDF</sub>
 
 <br/>
 
-读完论文或文章 → 规划整套 deck → 逐页生成 16:9 高质感 slide image → 合成为 `.pptx` 和 `.pdf`。
+读完论文 → 规划 deck → 生成 slide image → 导出 PPTX/PDF。
 
-| 风格 | 适合 |
-|------|------|
-| **journal-minimal** | Nature/IEEE 风学术汇报 |
-| **business-research** | 商业研究和策略汇报 |
-| **warm-notes** | 温暖手记风知识讲解 |
-| **liquid-glass** | Apple 式玻璃质感章节页 |
+| 输出 | |
+|------|--|
+| 🎞️ 幻灯片 | 16:9 视觉页面 |
+| 📦 导出 | `.pptx` + `.pdf` |
+| 🛠️ 返修 | 任意页可重生成 |
+
+</td>
+<td width="50%" align="center" valign="top">
 
 </td>
 </tr>
 </table>
+
+---
+
+## paper-deck — 不像模板的视觉幻灯片
+
+`paper-deck` 可以把论文、文章或技术笔记变成一套有设计感的幻灯片。它会先生成 deck brief 和逐页大纲，再写可复现的视觉提示词，逐页生成 16:9 slide image，最后合成为 `.pptx` 和 `.pdf`。
+
+它很适合细节返修：每一页都有独立 prompt，所以你可以继续要求“第 5 页更像论文图”“第 8 页换成真实 benchmark 图”“保留布局但把封面换成玻璃质感”。
+
+<p align="center">
+  <img src="images/paper_deck_styles.png" width="640"/>
+  <br/><sub>同一个论文主题的四种紧凑风格预览</sub>
+</p>
+
+| 风格 | 适合 |
+|------|------|
+| **journal-minimal** | Nature/IEEE 风学术汇报、答辩、组会 |
+| **business-research** | 商业研究、行业分析、投资人/客户汇报 |
+| **warm-notes** | 温暖手记风讲解、课程、论文学习笔记 |
+| **liquid-glass** | Apple 式玻璃质感封面、章节页和高冲击视觉页 |
+
+它也支持真实素材。如果 PDF 里有好的论文图、表格、实验曲线或截图，skill 会先规划哪些页面应该使用真实素材、怎么裁切、放在第几页、用什么框架承载。真实图片可以被放进干净学术面板、证据区块或玻璃质感布局里，比完全凭空生成更可信。
+
+```bash
+/paper-deck https://arxiv.org/abs/1706.03762
+/paper-deck /path/to/paper.pdf --style journal-minimal --slides 12
+/paper-deck notes.md --style liquid-glass
+```
 
 ---
 
