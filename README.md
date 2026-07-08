@@ -2,14 +2,14 @@
 
 English | [中文](./README.zh.md)
 
-**Turn academic papers into polished method figures, visual slide decks, and in-depth articles — zero config, one command.**
+**6 AI-powered skills for academic papers: method figures, deep articles, slide decks, surveys, posters, and summaries — zero config, one command.**
 
 <p align="center">
   <img src="examples/paper-illustrated/attention-is-all-you-need/transformer-overview-paper-figure.png" width="700" alt="Transformer architecture — generated from Attention Is All You Need"/>
 </p>
 
 <p align="center">
-  From arxiv link to publication-ready visuals, AIGC slide decks, and deep-dive articles.<br/>
+  From arxiv link to publication-ready visuals, AIGC slide decks, deep articles, comparison surveys, conference posters, and visual summaries.<br/>
   Drop a paper, pick a style, get output that looks like a human expert made it.
 </p>
 
@@ -36,17 +36,7 @@ npx skills add zsyggg/paper-craft-skills
 
 ## What's inside
 
-<table>
-<tr>
-<td width="50%" align="center" valign="top">
-
-### 🎨 paper-comic
-**Paper → Method Figures**
-
-<img src="examples/paper-illustrated/attention-is-all-you-need/transformer-overview-paper-figure.png" width="380"/><br/>
-<sub>Transformer architecture — generated from <i>Attention Is All You Need</i></sub>
-
-<br/>
+### 🎨 paper-comic — Paper → Method Figures
 
 Reads your paper → proposes what to draw → you confirm → generates.
 
@@ -55,53 +45,100 @@ Reads your paper → proposes what to draw → you confirm → generates.
 | **paper-figure** | Publication-grade diagrams |
 | **sketchnote** | Bright, warm hand-drawn study notes |
 
-</td>
-<td width="50%" align="center" valign="top">
+```bash
+/paper-comic https://arxiv.org/abs/1706.03762 --style sketchnote
+```
 
-### 📄 paper-analyzer
-**Paper → Deep Articles**
+### 📄 paper-analyzer — Paper → Deep Articles
 
-<img src="images/hero_banner.png" width="380"/><br/>
-<sub>Paper → polished HTML article with formulas, code cross-reference, and choice of style</sub>
+Reads the full paper → searches GitHub for open-source code → writes in your chosen style.
 
-<br/>
+| Style | Output |
+|-------|--------|
+| **storytelling** | Viral blog post style, hooks + analogies + golden takeaway |
+| **academic** | Peer-reviewed deep dive, KaTeX formulas, comparison tables |
+| **concise** | Cheat sheet, Mermaid diagram + key data table |
 
-Reads the full paper → searches GitHub for code → writes in your chosen style.
+Features: KaTeX formulas · Mermaid diagrams · Code cross-reference · Dark mode 🌙
 
-| Feature | |
-|---------|--|
-| 🌐 Output | **HTML** — share anywhere, read on mobile |
-| 📐 Formulas | **KaTeX** rendering |
-| 📊 Diagrams | **Mermaid** architecture charts |
-| ⚡ Setup | **Zero config** — no API keys |
+```bash
+/paper-analyzer https://arxiv.org/abs/1706.03762 --style academic
+```
 
-</td>
-</tr>
-<tr>
-<td width="50%" align="center" valign="top">
+### 🖼️ paper-deck — Paper → Visual Slide Deck
 
-### 🖼️ paper-deck
-**Paper → Visual Slide Deck**
+Plans the deck → generates 16:9 AIGC slide images → exports PPTX/PDF.
 
-<img src="images/paper_deck_intro.png" width="380"/><br/>
-<sub>Paper/article → analysis → outline → visual prompts → PPTX/PDF</sub>
+| Style | Best for |
+|-------|----------|
+| **journal-minimal** | Nature/IEEE academic decks, thesis defenses |
+| **business-research** | Strategy memos, investor/client briefings |
+| **warm-notes** | Teaching, study-note explanations |
+| **liquid-glass** | Apple-inspired visual chapters, covers |
 
-<br/>
+```bash
+/paper-deck https://arxiv.org/abs/1706.03762 --style journal-minimal --slides 12
+```
 
-Reads your paper → plans the deck → generates slide images → exports PPTX/PDF.
+### 🔬 paper-survey — Multi-Paper → Comparison Survey ✨ NEW
 
-| Output | |
-|--------|--|
-| 🎞️ Slides | 16:9 visual pages |
-| 📦 Export | `.pptx` + `.pdf` |
-| 🛠️ Edits | Regenerate any page |
+Reads multiple papers → builds structured comparison matrix → generates.
 
-</td>
-<td width="50%" align="center" valign="top">
+| Mode | Output |
+|------|--------|
+| **comparison-figures** | AIGC comparison diagrams |
+| **survey-deck** | Comparison slides (PPTX/PDF) |
+| **survey-article** | Deep comparison HTML article |
 
-</td>
-</tr>
-</table>
+Each paper gets a consistent color across all output. Differences are visually highlighted.
+
+```bash
+/paper-survey https://arxiv.org/abs/1706.03762 https://arxiv.org/abs/1907.04340
+/paper-survey --topic "Position encoding comparison" --papers p1.pdf p2.pdf
+```
+
+### 📋 paper-poster — Paper → Conference Poster ✨ NEW
+
+Automatically extracts core content → generates high-res AIGC poster → produces print-ready PDF.
+
+| Style | Size | Use |
+|-------|------|-----|
+| **conference-wide** | 48×36 in (4:3) | Standard conference poster |
+| **defense-poster** | 36×48 in (3:4) | Thesis defense |
+| **research-showcase** | 48×36 in (4:3) | Open house, demos |
+
+```bash
+/paper-poster https://arxiv.org/abs/1706.03762 --style conference-wide
+```
+
+### 📊 paper-summary — Paper → One-Page Visual Summary ✨ NEW
+
+Distills a paper into a single AIGC visual — perfect for sharing.
+
+| Mode | Format | Use |
+|------|--------|-----|
+| **infographic** | Vertical 2:3 | Social media, WeChat, Twitter |
+| **card-summary** | Square 1:1 | Reference managers, Notion |
+| **timeline-figure** | Horizontal 16:9 | README, slide insertion |
+
+```bash
+/paper-summary https://arxiv.org/abs/1706.03762 --mode infographic --language Chinese
+```
+
+---
+
+## Unified CLI
+
+All 6 skills available through a single command:
+
+```bash
+python3 scripts/papercraft.py list
+python3 scripts/papercraft.py help deck
+python3 scripts/papercraft.py comic https://arxiv.org/abs/1706.03762 --style sketchnote
+python3 scripts/papercraft.py survey p1.pdf p2.pdf --format survey-article
+python3 scripts/papercraft.py poster paper.pdf --style defense-poster
+python3 scripts/papercraft.py summary paper.pdf --mode card-summary
+```
 
 ---
 
@@ -109,27 +146,14 @@ Reads your paper → plans the deck → generates slide images → exports PPTX/
 
 `paper-deck` turns a paper, article, or technical note into a designed slide deck. It first builds a deck brief and slide-by-slide outline, then writes reproducible visual prompts, generates polished 16:9 slide images, and merges them into `.pptx` and `.pdf`.
 
-It is built for iteration: every page has its own prompt, so you can ask for precise changes like “make slide 5 more journal-like”, “replace slide 8 with a real benchmark chart”, or “keep the layout but switch the cover to liquid glass”.
+It is built for iteration: every page has its own prompt, so you can ask for precise changes like "make slide 5 more journal-like", "replace slide 8 with a real benchmark chart", or "keep the layout but switch the cover to liquid glass".
 
 <p align="center">
   <img src="images/paper_deck_styles.png" width="640"/>
   <br/><sub>Four compact style presets for the same paper topic</sub>
 </p>
 
-| Style | Best for |
-|-------|----------|
-| **journal-minimal** | Nature/IEEE-inspired academic decks and thesis defenses |
-| **business-research** | Strategy memos, industry research, investor/client briefings |
-| **warm-notes** | Study-note explanations, teaching, approachable paper walkthroughs |
-| **liquid-glass** | Apple-inspired visual chapters, covers, and high-impact section pages |
-
-It also supports real source visuals. When a PDF contains strong figures, tables, plots, or screenshots, the skill plans which slides should use them, where they should be cropped, and how they should be framed. Real visuals can be mounted into clean academic panels, evidence blocks, or glass-style layouts instead of being hallucinated from scratch.
-
-```bash
-/paper-deck https://arxiv.org/abs/1706.03762
-/paper-deck /path/to/paper.pdf --style journal-minimal --slides 12
-/paper-deck notes.md --style liquid-glass
-```
+It also supports real source visuals. When a PDF contains strong figures, tables, plots, or screenshots, the skill plans which slides should use them, where they should be cropped, and how they should be framed.
 
 ---
 
@@ -184,28 +208,58 @@ Reads the paper, then recommends:
 | **academic** | A peer-reviewed deep dive — KaTeX formulas, comparison tables | Lab meetings, lit reviews |
 | **concise** | A cheat sheet — Mermaid diagram + key data table | Quick understanding |
 
-### Features
+### Dark Mode Support 🌙
 
-<table>
-<tr>
-<td width="50%" align="center">
-<img src="images/formula_feature.png" width="360"/><br/>
-<b>Formula Explanation</b><br/>
-Extracted paper formulas with symbol-by-symbol breakdown
-</td>
-<td width="50%" align="center">
-<img src="images/code_feature.png" width="360"/><br/>
-<b>Code Analysis</b><br/>
-Aligns paper concepts with the GitHub source code
-</td>
-</tr>
-</table>
+Every paper-analyzer HTML article now supports dark mode — automatically follows system preference, with a manual toggle button.
+
+---
+
+## paper-survey — Compare multiple papers, visually
+
+`paper-survey` extends the same approach to **multiple papers**. It reads each paper independently, builds a structured comparison matrix across 5 dimensions (problem definition, method approach, key design, experimental results, trade-offs), and generates:
+
+| Mode | Output | Use case |
+|------|--------|----------|
+| **comparison-figures** | AIGC comparison diagrams (PNG) | Quick team overview, tech selection |
+| **survey-deck** | 16:9 comparison slides (PPTX/PDF) | Group meeting survey presentations |
+| **survey-article** | Deep comparison HTML article | Literature review writing |
 
 ```bash
-/paper-analyzer https://arxiv.org/abs/1706.03762     # arxiv link
-/paper-analyzer /path/to/paper.pdf                     # local PDF
-/paper-analyzer                                         # then paste text
+/paper-survey https://arxiv.org/abs/1706.03762 https://arxiv.org/abs/1907.04340
+/paper-survey --topic "Transformer position encoding" --papers p1.pdf p2.pdf p3.pdf
 ```
+
+---
+
+## paper-poster — From paper to conference poster
+
+`paper-poster` extracts core content from a paper and generates a complete AIGC conference poster at 300dpi print resolution. Three layout presets match different scenarios, and the script handles upscaling and PDF export automatically.
+
+```bash
+/paper-poster https://arxiv.org/abs/1706.03762 --style conference-wide
+/paper-poster paper.pdf --style defense-poster
+```
+
+---
+
+## paper-summary — One page, everything clear
+
+`paper-summary` distills an entire paper into a single AIGC visual. Three modes for different sharing scenarios — infographic for social media, card for reference managers, timeline for README insertion.
+
+```bash
+/paper-summary https://arxiv.org/abs/1706.03762 --mode infographic --language Chinese
+/paper-summary paper.pdf --mode card-summary
+```
+
+---
+
+## Requirements
+
+```bash
+pip install Pillow python-pptx
+```
+
+Optional: `pip install markdown pypdf2` for paper-analyzer HTML generation.
 
 ---
 
