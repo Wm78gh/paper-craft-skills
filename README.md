@@ -2,6 +2,8 @@
 
 **10 AI-powered skills for academic papers — zero config, one command.**
 
+English | [中文](./README.zh.md)
+
 [![CI](https://github.com/zsyggg/paper-craft-skills/actions/workflows/quality-check.yml/badge.svg)](https://github.com/zsyggg/paper-craft-skills/actions/workflows/quality-check.yml)
 
 ---
