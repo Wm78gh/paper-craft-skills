@@ -1,29 +1,35 @@
-# Paper-Survey Example: Transformer Position Encoding Comparison
+# paper-survey 示例：Transformer 位置编码对比
 
-This directory demonstrates paper-survey's **comparison-figures** mode output for 4 position encoding methods.
+4 种位置编码方案的 AIGC 对比图解。
 
-## Comparison Scope
+## 实际生成效果
 
-| Method | Paper | Year | Core Idea |
-|--------|-------|------|-----------|
-| Sinusoidal | Attention Is All You Need | 2017 | Fixed sine/cosine functions |
-| Relative Position (REL) | Transformer-XL | 2019 | Bias table for relative offsets |
-| Rotary (RoPE) | RoFormer | 2021 | Rotate Q/K by position angle |
-| ALiBi | Train Short, Test Long | 2021 | Linear bias to attention scores |
+### 对比总览
+![Survey Overview](./images/survey-overview.png)
 
-## Output Prompts
+### 架构对比
+![Survey Architecture](./images/survey-architecture.png)
 
-| File | Description |
-|------|-------------|
-| prompt-overview.md | Comparison overview figure prompt |
-| prompt-architecture.md | Method path comparison prompt |
-| prompt-experiments.md | Experimental results comparison prompt |
-| prompt-timeline.md | Research evolution timeline prompt |
+### 实验对比
+![Survey Experiments](./images/survey-experiments.png)
 
-## Quick Start
+### 演进时间线
+![Survey Timeline](./images/survey-timeline.png)
+
+## 快速开始
 
 ```bash
 /paper-survey --topic "Transformer position encoding" \
   --papers paper1.pdf paper2.pdf paper3.pdf paper4.pdf \
   --format comparison-figures
 ```
+
+## 完整工作流产出
+
+| 文件 | 说明 |
+|------|------|
+| `prompt-overview.md` | 对比总览 prompt |
+| `prompt-architecture.md` | 架构对比 prompt |
+| `prompt-experiments.md` | 实验对比 prompt |
+| `prompt-timeline.md` | 时间线 prompt |
+| `images/*.png` | AIGC 生成的 4 张实际图片 ✅ |
